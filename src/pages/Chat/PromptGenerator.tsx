@@ -4,6 +4,8 @@ import LoadingLine from '../../components/LoadingLine'
 import Button from '../../components/Button'
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { clearChat } from '../../store/user/userSlice'
 import { RootState } from '../../store'
 import { Icon } from '@iconify/react/dist/iconify.js'
 
@@ -11,6 +13,7 @@ function PromptGenerator() {
   const { handlePromptChange, handleFileChange, handleSendPrompt, handleKeyDown, data, prompt, textareaRef, loading, error, base64File } = usePromptGenerator()
   const { selectedModel } = useSelector((state: RootState) => state.user)
   const messagesContainerRef = useRef<HTMLDivElement>(null)
+  const dispatch = useDispatch()
   return (
     <div className='conversation-container'>
       <div className='messages-container' ref={messagesContainerRef}>
@@ -38,7 +41,7 @@ function PromptGenerator() {
           id='prompt'
           value={prompt}
           className='prompt-input'
-          placeholder='Type your message...'
+          placeholder='Escribe...'
           onChange={handlePromptChange}
           onKeyDown={handleKeyDown}
           ref={textareaRef}
@@ -57,7 +60,8 @@ function PromptGenerator() {
             </label>
           </div>
         )}
-        <Button disabled={!prompt || loading} onClick={handleSendPrompt}>Send</Button>
+        <Icon className='clear-icon' icon='mdi:trashcan-outline' height={24} onClick={() => dispatch(clearChat())} />
+        <Button disabled={!prompt || loading} onClick={handleSendPrompt}>&gt;</Button>
       </div>
     </div>
   )

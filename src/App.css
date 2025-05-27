@@ -9,7 +9,7 @@
 }
 
 .app-wrapper.light {
-  --background-color: #eaeaea;
+  --background-color: hsl(0, 0%, 100%);
   --text-color: #080808;
   --input-background: rgba(198, 198, 198, 0.1);
   --input-border: 1px solid rgba(191, 191, 191, 0.5);

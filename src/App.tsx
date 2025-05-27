@@ -1,20 +1,29 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './store'
+import { setUser, setSelectedModel } from './store/user/userSlice'
 
 import './App.css'
 import Welcome from './pages/Welcome/Welcome'
 import Chat from './pages/Chat/Chat'
 
 function App() {
-  const { API_KEY, theme } = useSelector((state: RootState) => state.user)
-
+  const dispatch = useDispatch()
+  const { API_KEY } = useSelector((state: RootState) => state.user)
+useEffect(() => {
+    // Configura aquí tu API key y nombre fijos
+    dispatch(setUser({
+      name: 'Jose',        // Cambia esto por el nombre que quieras
+      API_KEY: 'AIzaSyAivCOD-NXXmO9NUxi0eHCuJQmesN60L8I',   // Cambia esto por tu API key
+      proxy: undefined
+    }))
+    dispatch(setSelectedModel('gemini-1.5-flash'))
+  }, [dispatch])
   return (
-    <main className={`app-wrapper ${theme === 'light' ? 'light' : 'dark'}`}>
-      {API_KEY ? 
+    <main className={`app-wrapper light`}>
+     
         <Chat />
-        :
-        <Welcome />
-      }
+        
     </main>
   )
 }

@@ -10,7 +10,7 @@ function Welcome() {
   return (
     <div className='welcome-page'>
       <div className='theme-toggle-wrapper'>
-        <ThemeToggle />
+        
       </div>
       <div className='heading'>
         <h1 className={showInputs ? 'small-h1' : ''}>Chat with <span>Gemini</span></h1>
