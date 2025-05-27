@@ -14,7 +14,7 @@ useEffect(() => {
     // Configura aquí tu API key y nombre fijos
     dispatch(setUser({
       name: 'Jose',        // Cambia esto por el nombre que quieras
-      API_KEY: 'AIzaSyAivCOD-NXXmO9NUxi0eHCuJQmesN60L8I',   // Cambia esto por tu API key
+      API_KEY: import.meta.env.VITE_GEMINI_API_KEY,   // Cambia esto por tu API key
       proxy: undefined
     }))
     dispatch(setSelectedModel('gemini-1.5-flash'))
