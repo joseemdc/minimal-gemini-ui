@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './store'
+import { useDispatch} from 'react-redux'
+
 import { setUser, setSelectedModel } from './store/user/userSlice'
 
 import './App.css'
-import Welcome from './pages/Welcome/Welcome'
+
 import Chat from './pages/Chat/Chat'
 
 function App() {
   const dispatch = useDispatch()
-  const { API_KEY } = useSelector((state: RootState) => state.user)
+  
 useEffect(() => {
     // Configura aquí tu API key y nombre fijos
     dispatch(setUser({
