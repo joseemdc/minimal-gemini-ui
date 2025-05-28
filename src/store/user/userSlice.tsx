@@ -3,8 +3,8 @@ import { generateTextContent } from './dispatchers.user'
 import { UserState } from '../../types/responses'
 
 const initialUserState: UserState = {
-  name: '',
-  API_KEY: '',
+  name: 'Jose',
+  API_KEY: import.meta.env.VITE_GEMINI_API_KEY,
   conversation: {
     loading: false,
     error: undefined,
